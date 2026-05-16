@@ -67,7 +67,7 @@ export default function ContactApp() {
       } else if (keywords.experience.some(k => lowerInput.includes(k))) {
         replyText = "I've been working as a freelance Full Stack developer since 2022. I've delivered complex platforms like the Trust Nepal Escrow system and various modern job portals, focusing on security and fluid user experiences.";
       } else if (keywords.education.some(k => lowerInput.includes(k))) {
-        replyText = "I am currently pursuing my Bachelor in Computer Science and Information Technology (BSc. CSIT) at Patan Multiple Campus, Tribhuvan University. My studies focus on software architecture and algorithmic efficiency.";
+        replyText = "I am currently pursuing my Bachelor in Computer Science and Information Technology (BSc. CSIT) at Ambikeshwari Campus, Tribhuvan University. My studies focus on software architecture and algorithmic efficiency.";
       } else if (keywords.contact.some(k => lowerInput.includes(k))) {
         replyText = "The best way to reach me is via email at dhrubarajchaudhary498@gmail.com. You can also find me on LinkedIn (linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba) for professional inquiries!";
       } else if (keywords.projects.some(k => lowerInput.includes(k))) {

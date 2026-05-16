@@ -7,14 +7,15 @@ export default function ResumeApp() {
       <div className="flex items-center justify-between border-b border-white/5 bg-white/5 p-3 backdrop-blur-xl px-6">
         <div className="flex items-center space-x-3">
           <div className="h-2 w-2 rounded-full bg-red-500" />
-          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">Dhruba_CV_2024.pdf</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">resume.pdf</span>
         </div>
-        <button 
-          onClick={() => window.print()}
+        <a 
+          href="/resume.pdf"
+          download="resume.pdf"
           className="rounded-full bg-purple-600 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white hover:bg-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)]"
         >
-          Print PDF
-        </button>
+          Download PDF
+        </a>
       </div>
 
       <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-neutral-100 hide-scrollbar">
@@ -46,7 +47,7 @@ export default function ResumeApp() {
               <span className="text-[13px]">2020 – 2024</span>
             </div>
             <p className="text-[13px] uppercase mt-1">Bachelor in Computer Science and Information Technology (BSc. CSIT)</p>
-            <p className="text-[13px] mt-1 italic text-gray-600">Patan Multiple Campus</p>
+            <p className="text-[13px] mt-1 italic text-gray-600">Ambikeshwari Campus</p>
             <p className="text-[13px] mt-1">
               RELEVANT COURSEWORK: Software Engineering, Web Technologies, Database Systems, Data Structures & Algorithms, Network Security.
             </p>
