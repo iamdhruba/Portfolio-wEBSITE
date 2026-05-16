@@ -114,33 +114,29 @@ export default function ResumeApp() {
             size: A4;
             margin: 0;
           }
-          body {
-            margin: 0;
-            padding: 0;
+          html, body {
+            height: auto;
+            overflow: visible !important;
             background: white !important;
+          }
+          body * {
+            visibility: hidden;
+          }
+          .resume-print-area, .resume-print-area * {
+            visibility: visible;
           }
           .resume-print-area {
-            position: fixed;
-            top: 0;
+            position: absolute;
             left: 0;
-            width: 210mm;
-            height: 297mm;
-            padding: 20mm;
-            margin: 0 auto;
+            top: 0;
+            width: 100%;
+            padding: 20mm !important;
+            margin: 0 !important;
             background: white !important;
-            z-index: 9999;
-            visibility: visible !important;
-            overflow: hidden !important;
-          }
-          .resume-print-area * {
-            visibility: visible !important;
+            box-shadow: none !important;
           }
           .shadow-2xl {
             box-shadow: none !important;
-          }
-          /* Hide everything else */
-          body > *:not(.resume-print-area) {
-            display: none !important;
           }
         }
       `}</style>
