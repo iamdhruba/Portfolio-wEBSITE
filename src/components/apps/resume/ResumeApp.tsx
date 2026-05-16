@@ -77,16 +77,22 @@ export default function ResumeApp() {
             <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Projects</h2>
             <ul className="list-disc list-outside ml-4 text-[13px] space-y-3">
               <li>
-                <strong>Escrow Nepal (Flutter, Firebase):</strong> A secure, intermediary payment platform designed for P2P transactions. Features automated verification, real-time balance tracking, and end-to-end encryption.
+                <strong>Trust Nepal Escrow (Flutter, Node.js, eSewa):</strong> A sophisticated P2P escrow platform for secure transactions in Nepal. Features automated mediation, local payment integration, and real-time chat.
               </li>
               <li>
-                <strong>macOS Portfolio OS (Next.js, Framer Motion):</strong> A high-fidelity, interactive operating system experience built with React. Implements complex window management logic, spatial animations, and a responsive application registry.
+                <strong>macOS Portfolio OS (Next.js, Framer Motion):</strong> A high-fidelity, interactive operating system experience. Implements complex window management, spatial animations, and a responsive application registry.
               </li>
               <li>
-                <strong>Global Job Portal (Next.js, Prisma, PostgreSQL):</strong> A scalable employment platform with intelligent applicant matching, automated resume parsing, and employer analytics dashboard.
+                <strong>Focusflow (Flutter, Clean Architecture):</strong> Advanced productivity and focus management ecosystem helping users optimize cognitive load using Pomodoro techniques and task-boxing.
               </li>
               <li>
-                <strong>Himalayan Travel (React, GSAP):</strong> An immersive, animation-heavy travel discovery engine featuring 3D parallax effects and high-resolution media optimization.
+                <strong>Confess Nepal (Flutter, Node.js, Socket.io):</strong> A real-time anonymous social confession platform featuring community moderation and sentiment-based interaction.
+              </li>
+              <li>
+                <strong>Job Portal (React, MongoDB, Docker):</strong> Full-stack recruitment engine with employer dashboards, automated candidate management, and real-time communication tools.
+              </li>
+              <li>
+                <strong>Veg Typing (React, Vite):</strong> High-performance utility for practicing Nepali typing with real-time accuracy tracking and WPM analytics.
               </li>
             </ul>
           </div>
