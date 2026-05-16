@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   title: 'Dhruba Raj Chaudhary — Full Stack Developer',
   description: 'Interactive macOS portfolio of Dhruba Raj Chaudhary.',
   icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/icons/applelogo.svg',
+    apple: '/icons/applelogo.svg',
   },
 };
 
