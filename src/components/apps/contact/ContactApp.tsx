@@ -69,7 +69,7 @@ export default function ContactApp() {
       } else if (keywords.education.some(k => lowerInput.includes(k))) {
         replyText = "I am currently pursuing my Bachelor in Computer Science and Information Technology (BSc. CSIT) at Patan Multiple Campus, Tribhuvan University. My studies focus on software architecture and algorithmic efficiency.";
       } else if (keywords.contact.some(k => lowerInput.includes(k))) {
-        replyText = "The best way to reach me is via email at dhrubarajchaudhary498@gmail.com. You can also find me on LinkedIn (linkedin.com/in/dhrubarajchaudhary) for professional inquiries!";
+        replyText = "The best way to reach me is via email at dhrubarajchaudhary498@gmail.com. You can also find me on LinkedIn (linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba) for professional inquiries!";
       } else if (keywords.projects.some(k => lowerInput.includes(k))) {
         replyText = "You can see my highlighted work in the 'Projects' app on the desktop. I'm particularly proud of my Escrow Nepal system and this very macOS Portfolio OS you're interacting with right now!";
       } else if (keywords.greetings.some(k => lowerInput.includes(k))) {

@@ -871,8 +871,8 @@ function Footer() {
             <span className="fd text-[9px] uppercase tracking-[0.3em] font-bold text-white/30">Connect</span>
             <div className="flex flex-col gap-2">
               <a href="https://github.com/iamdhruba" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">Github</a>
-              <a href="https://www.linkedin.com/in/dhrubarajchaudhary/" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">LinkedIn</a>
-              <a href="https://www.facebook.com/dhrubarajchaudhary" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">Facebook</a>
+              <a href="https://www.linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba/" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">LinkedIn</a>
+              <a href="https://www.instagram.com/saydhruba" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">Instagram</a>
             </div>
           </div>
 

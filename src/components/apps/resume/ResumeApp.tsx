@@ -26,7 +26,7 @@ export default function ResumeApp() {
             <h1 className="text-4xl font-bold mb-1">Dhruba Raj Chaudhary</h1>
             <p className="text-gray-600 mb-2">Full Stack Developer</p>
             <p className="text-[13px]">
-              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/iamdhruba | github.com/iamdhruba
+              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
             </p>
           </div>
 
