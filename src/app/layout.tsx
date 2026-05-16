@@ -35,7 +35,7 @@ export default function RootLayout({
           document.addEventListener('gestureend', function(e) { e.preventDefault(); });
         `}} />
       </head>
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
