@@ -23,12 +23,17 @@ export default function ResumeApp() {
         <div className="mx-auto max-w-[800px] bg-white p-8 md:p-12 shadow-2xl text-black">
           
           {/* Header */}
-          <div className="text-center mb-6">
-            <h1 className="text-4xl font-bold mb-1">Dhruba Raj Chaudhary</h1>
-            <p className="text-gray-600 mb-2">Full Stack Developer</p>
-            <p className="text-[13px]">
-              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
-            </p>
+          <div className="flex flex-col md:flex-row items-center gap-6 mb-8 border-b pb-8">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-100 flex-shrink-0 bg-gray-50">
+              <img src="/image/pp.jpeg" alt="Profile" className="w-full h-full object-cover" />
+            </div>
+            <div className="text-center md:text-left flex-1">
+              <h1 className="text-4xl font-bold mb-1">Dhruba Raj Chaudhary</h1>
+              <p className="text-gray-600 mb-2 font-medium">Full Stack Developer</p>
+              <p className="text-[13px] text-gray-500 max-w-md">
+                dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
+              </p>
+            </div>
           </div>
 
           {/* Personal Statement */}

@@ -162,7 +162,12 @@ function CustomCursor({ containerRef }: { containerRef: React.RefObject<HTMLDivE
 function Nav() {
   return (
     <nav className="absolute top-0 left-1/2 w-[90%] -translate-x-1/2 z-50 mix-blend-difference text-white py-6 flex justify-between items-center pointer-events-none">
-      <div className="fp text-xl font-bold uppercase tracking-tight pointer-events-auto">Dhruba</div>
+      <div className="flex items-center gap-4 pointer-events-auto">
+        <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+          <img src="/image/pp.jpeg" alt="Dhruba" className="w-full h-full object-cover" />
+        </div>
+        <div className="fp text-xl font-bold uppercase tracking-tight">Dhruba</div>
+      </div>
       <Magnetic>
         <a href="mailto:dhrubarajchaudhary498@gmail.com"
           className="hover-trigger fd text-[10px] uppercase tracking-[0.2em] font-bold pointer-events-auto block px-4 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
