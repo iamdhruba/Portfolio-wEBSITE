@@ -17,6 +17,8 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
+import { Analytics } from "@vercel/analytics/next"
+
 export default function RootLayout({
   children,
 }: {
@@ -35,7 +37,10 @@ export default function RootLayout({
           document.addEventListener('gestureend', function(e) { e.preventDefault(); });
         `}} />
       </head>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
