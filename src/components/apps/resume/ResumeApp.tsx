@@ -110,27 +110,37 @@ export default function ResumeApp() {
 
       <style jsx global>{`
         @media print {
-          body * {
-            visibility: hidden;
-          }
-          .resume-print-area, .resume-print-area * {
-            visibility: visible;
-          }
-          .resume-print-area {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0;
+          @page {
+            size: A4;
             margin: 0;
+          }
+          body {
+            margin: 0;
+            padding: 0;
             background: white !important;
           }
-          .resume-print-area .shadow-2xl {
-            shadow: none !important;
+          .resume-print-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            background: white !important;
+            z-index: 9999;
+            visibility: visible !important;
+            overflow: hidden !important;
+          }
+          .resume-print-area * {
+            visibility: visible !important;
+          }
+          .shadow-2xl {
             box-shadow: none !important;
           }
-          .hide-scrollbar {
-            overflow: visible !important;
+          /* Hide everything else */
+          body > *:not(.resume-print-area) {
+            display: none !important;
           }
         }
       `}</style>
