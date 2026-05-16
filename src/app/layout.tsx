@@ -4,6 +4,10 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'Dhruba Raj Chaudhary — Full Stack Developer',
   description: 'Interactive macOS portfolio of Dhruba Raj Chaudhary.',
+  icons: {
+    icon: 'https://raw.githubusercontent.com/PuruVJ/macos-web/main/public/apple.png',
+    apple: 'https://raw.githubusercontent.com/PuruVJ/macos-web/main/public/apple.png',
+  },
 };
 
 export const viewport: Viewport = {
