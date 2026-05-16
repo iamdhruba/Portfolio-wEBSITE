@@ -20,4 +20,4 @@ export interface ContextMenuItem {
   divider?: boolean;
 }
 
-export type WallpaperID = 'ventura-day' | 'ventura-night' | 'sonoma-day' | 'sonoma-night' | 'abstract-blue' | 'abstract-purple' | 'developer' | 'nepal';
+export type WallpaperID = 'ventura-day' | 'ventura-night' | 'sonoma-day' | 'sonoma-night' | 'abstract-blue' | (string & {});

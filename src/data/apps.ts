@@ -50,4 +50,9 @@ export const APP_REGISTRY: App[] = [
     icon: 'https://raw.githubusercontent.com/PuruVJ/macos-web/main/public/app-icons/vscode/512.png',
     component: 'VSCodeApp', defaultSize: { width: 1000, height: 700 }, minSize: { width: 600, height: 400 }
   },
+  {
+    id: 'settings', label: 'Settings',
+    icon: '/icons/setting.png',
+    component: 'SettingsApp', defaultSize: { width: 900, height: 600 }, minSize: { width: 700, height: 500 }
+  },
 ];

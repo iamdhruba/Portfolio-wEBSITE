@@ -27,11 +27,11 @@
 :root {
   /* macOS Ventura palette */
   --macos-bg:           #1e1e1e;
-  --dock-bg:            rgba(255,255,255,0.18);
-  --dock-border:        rgba(255,255,255,0.25);
-  --menubar-bg:         rgba(30,30,30,0.72);
-  --menubar-text:       rgba(255,255,255,0.92);
-  --window-bg:          rgba(28,28,30,0.92);
+  --dock-bg:            rgba(255,255,255,0.1);
+  --dock-border:        rgba(255,255,255,0.15);
+  --menubar-bg:         rgba(0,0,0,0.2);
+  --menubar-text:       rgba(255,255,255,0.95);
+  --window-bg:          rgba(28,28,30,0.85);
   --window-header:      rgba(44,44,46,0.95);
   --window-border:      rgba(255,255,255,0.08);
   --traffic-red:        #ff5f57;
@@ -42,7 +42,7 @@
   --text-primary:       rgba(255,255,255,0.92);
   --text-secondary:     rgba(255,255,255,0.55);
   --text-tertiary:      rgba(255,255,255,0.30);
-  --blur-amount:        20px;
+  --blur-amount:        40px;
   --radius-window:      12px;
   --radius-app:         20px;
   --shadow-window:      0 22px 70px rgba(0,0,0,0.6);
@@ -77,8 +77,8 @@ body {
 
 .glass {
   background: var(--dock-bg);
-  backdrop-filter: blur(var(--blur-amount)) saturate(180%);
-  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(180%);
+  backdrop-filter: blur(var(--blur-amount)) saturate(200%) brightness(105%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(200%) brightness(105%);
   border: 1px solid var(--dock-border);
 }
 

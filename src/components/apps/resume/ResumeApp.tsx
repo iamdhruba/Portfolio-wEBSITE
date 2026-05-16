@@ -7,7 +7,7 @@ export default function ResumeApp() {
   return (
     <div className="flex h-full w-full flex-col bg-[#050505] font-sans">
       {/* High-End Toolbar */}
-      <div className="flex items-center justify-between border-b border-white/5 bg-white/5 p-3 backdrop-blur-xl px-6">
+      <div className="flex items-center justify-between border-b border-white/5 bg-white/5 p-3 backdrop-blur-xl px-6 resume-toolbar">
         <div className="flex items-center space-x-3">
           <div className="h-2 w-2 rounded-full bg-red-500" />
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">resume.pdf</span>
@@ -22,14 +22,14 @@ export default function ResumeApp() {
 
       <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-neutral-100 hide-scrollbar resume-print-area">
         {/* Resume Paper Form */}
-        <div className="mx-auto max-w-[800px] bg-white p-8 md:p-12 shadow-2xl text-black">
+        <div className="mx-auto max-w-[800px] bg-white p-8 md:p-12 shadow-2xl text-black resume-paper">
           
           {/* Header */}
           <div className="text-center mb-8 border-b pb-8">
             <h1 className="text-4xl font-bold mb-1">{user.name}</h1>
             <p className="text-gray-600 mb-2 font-medium">{user.description}</p>
             <p className="text-[13px] text-gray-500">
-              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
+              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | +977-9705402345
             </p>
           </div>
 
@@ -117,28 +117,47 @@ export default function ResumeApp() {
           html, body {
             width: 210mm !important;
             height: auto !important;
-            overflow: visible !important;
             margin: 0 !important;
             padding: 0 !important;
             background: white !important;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
           }
+          /* Hide everything by default */
           body * {
-            visibility: hidden;
+            visibility: hidden !important;
           }
+          /* Only show the resume print area and its contents */
           .resume-print-area, .resume-print-area * {
-            visibility: visible;
+            visibility: visible !important;
           }
+          /* Specifically hide the toolbar */
+          .resume-toolbar {
+            display: none !important;
+          }
+          /* Position and size the print area correctly */
           .resume-print-area {
-            position: absolute;
-            left: 0;
-            top: 0;
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
             width: 210mm !important;
-            min-height: 297mm;
-            padding: 15mm !important;
+            min-height: 297mm !important;
+            padding: 0 !important;
             margin: 0 !important;
             background: white !important;
-            box-sizing: border-box !important;
+            overflow: visible !important;
+            display: block !important;
+          }
+          /* Standardize the resume paper for printing */
+          .resume-paper {
             box-shadow: none !important;
+            max-width: none !important;
+            width: 210mm !important;
+            margin: 0 !important;
+            padding: 15mm 20mm !important;
+            border: none !important;
+            background: white !important;
+            min-height: 297mm !important;
           }
           .hide-scrollbar {
             overflow: visible !important;

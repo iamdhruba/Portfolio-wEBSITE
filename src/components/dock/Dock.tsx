@@ -28,7 +28,10 @@ export default function Dock() {
                 mouseX={mouseX} 
                 isOpen={isOpen}
                 isActive={isActive}
-                onClick={() => openWindow(app.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openWindow(app.id);
+                }}
               />
               {index === APP_REGISTRY.length - 2 && (
                 <div className="h-10 w-[1px] bg-white/10 mx-1" />
@@ -41,7 +44,7 @@ export default function Dock() {
   );
 }
 
-function DockItem({ app, mouseX, isOpen, isActive, onClick }: { app: any, mouseX: MotionValue, isOpen: boolean, isActive: boolean, onClick: () => void }) {
+function DockItem({ app, mouseX, isOpen, isActive, onClick }: { app: any, mouseX: MotionValue, isOpen: boolean, isActive: boolean, onClick: (e: React.MouseEvent) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const setDockIconRect = useOSStore(state => state.setDockIconRect);
   

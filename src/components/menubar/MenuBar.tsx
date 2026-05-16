@@ -31,13 +31,10 @@ export default function MenuBar() {
     { id: 'sonoma-day', label: 'Sonoma Day' },
     { id: 'sonoma-night', label: 'Sonoma Night' },
     { id: 'abstract-blue', label: 'Abstract Blue' },
-    { id: 'abstract-purple', label: 'Abstract Purple' },
-    { id: 'developer', label: 'Developer' },
-    { id: 'nepal', label: 'Nepal' },
   ];
 
   return (
-    <div className="glass absolute top-0 z-[9999] flex h-[28px] w-full select-none items-center justify-between px-4 text-[13px] font-medium text-white/90" style={{ background: 'var(--menubar-bg)' }}>
+    <div className="glass absolute top-0 z-[9999] flex h-[28px] w-full select-none items-center justify-between px-4 text-[13px] font-medium text-white/90 border-none" style={{ background: 'var(--menubar-bg)' }}>
       <div className="flex items-center space-x-1">
         {/* Apple Menu */}
         <MenuWrapper trigger={

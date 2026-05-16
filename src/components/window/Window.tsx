@@ -13,6 +13,7 @@ import Terminal from '../apps/terminal/terminal';
 import SkillsApp from '../apps/skills/SkillsApp';
 import Calculator from '../apps/calculator/Calculator';
 import VSCodeApp from '../apps/vscode/VSCodeApp';
+import SettingsApp from '../apps/settings/SettingsApp';
 import IPhoneFrame from '@/components/shared/IPhoneFrame';
 
 export default function Window({ win }: any) {
@@ -139,6 +140,7 @@ export default function Window({ win }: any) {
           {win.appId === 'skills' && <SkillsApp />}
           {win.appId === 'calculator' && <Calculator />}
           {win.appId === 'vscode' && <VSCodeApp />}
+          {win.appId === 'settings' && <SettingsApp />}
         </div>
       </motion.div>
     </Rnd>

@@ -5,14 +5,7 @@ export default function BootScreen() {
   const setPhase = useOSStore((state) => state.setPhase);
 
   useEffect(() => {
-    const hasBooted = sessionStorage.getItem('macos-booted');
-    if (hasBooted) {
-      setPhase('lock');
-      return;
-    }
-    
     const timer = setTimeout(() => {
-      sessionStorage.setItem('macos-booted', '1');
       setPhase('lock');
     }, 3500);
     return () => clearTimeout(timer);

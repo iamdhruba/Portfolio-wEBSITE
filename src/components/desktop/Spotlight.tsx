@@ -76,7 +76,7 @@ export default function Spotlight() {
             animate={{ opacity: 1, scale: 1, y: 0, x: '-50%' }}
             exit={{ opacity: 0, scale: 0.95, y: -20, x: '-50%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-[15%] z-[10001] w-[600px] overflow-hidden rounded-xl bg-[#2a2a2a]/80 shadow-2xl backdrop-blur-2xl border border-white/10"
+            className="fixed left-1/2 top-[15%] z-[10001] w-[600px] overflow-hidden rounded-2xl bg-black/40 shadow-2xl backdrop-blur-[50px] border border-white/10"
           >
             {/* Input Area */}
             <div className="flex items-center space-x-3 px-4 py-4 border-b border-white/10">
