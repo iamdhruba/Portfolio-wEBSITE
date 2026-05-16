@@ -16,13 +16,14 @@ interface OSState {
   contextMenu: ContextMenuState | null;
   dockIconRects: Record<string, { x: number, y: number, width: number, height: number }>;
   iconPositions: Record<string, { x: number, y: number }>;
-
   user: {
     name: string;
     description: string;
     profilePic: string;
   };
-  setPhase: (phase: 'boot' | 'lock' | 'desktop') => void;
+  lockScreenSleep: boolean;
+  setPhase: (phase: 'boot' | 'lock' | 'desktop', sleep?: boolean) => void;
+  setLockScreenSleep: (sleep: boolean) => void;
   setTheme: (theme: 'dark' | 'light') => void;
   setWallpaper: (wallpaper: WallpaperID) => void;
   setUser: (user: Partial<OSState['user']>) => void;
@@ -54,8 +55,13 @@ export const useOSStore = create<OSState>()(
         description: 'Full Stack Developer',
         profilePic: '/image/pp.jpeg',
       },
+      lockScreenSleep: false,
 
-      setPhase: (phase) => set({ phase }),
+      setPhase: (phase, sleep) => set((state) => ({ 
+        phase, 
+        lockScreenSleep: phase === 'desktop' ? false : (sleep !== undefined ? sleep : state.lockScreenSleep)
+      })),
+      setLockScreenSleep: (lockScreenSleep) => set({ lockScreenSleep }),
       setTheme: (theme) => set({ theme }),
       setWallpaper: (wallpaper) => set({ wallpaper }),
       setUser: (userData) => set((state) => ({ user: { ...state.user, ...userData } })),

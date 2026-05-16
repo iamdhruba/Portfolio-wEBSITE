@@ -5,29 +5,38 @@ import { useOSStore } from '@/store/useOSStore';
 export default function LockScreen() {
   const setPhase = useOSStore((state) => state.setPhase);
   const user = useOSStore((state) => state.user);
+  const lockScreenSleep = useOSStore((state) => state.lockScreenSleep);
+  const setLockScreenSleep = useOSStore((state) => state.setLockScreenSleep);
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     
-    // Add global key listener to unlock
-    const handleGlobalKey = (e: KeyboardEvent) => {
-      handleUnlock();
+    const handleWake = () => {
+      setLockScreenSleep(false);
     };
-    window.addEventListener('keydown', handleGlobalKey);
+
+    window.addEventListener('keydown', handleWake);
+    window.addEventListener('mousedown', handleWake);
 
     return () => {
       clearInterval(timer);
-      window.removeEventListener('keydown', handleGlobalKey);
+      window.removeEventListener('keydown', handleWake);
+      window.removeEventListener('mousedown', handleWake);
     };
-  }, []);
+  }, [setLockScreenSleep]);
 
-  const handleUnlock = () => {
+  const handleUnlock = (e?: React.MouseEvent | React.KeyboardEvent) => {
+    if (e) e.stopPropagation();
     setPhase('desktop');
   };
 
   const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
   const formattedDate = time.toLocaleDateString('en-US', { weekday: 'long', day: 'numeric', month: 'long' });
+
+  if (lockScreenSleep) {
+    return <div className="fixed inset-0 z-[9999] bg-black cursor-default" />;
+  }
 
   return (
     <motion.div 

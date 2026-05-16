@@ -47,11 +47,11 @@ export default function MenuBar() {
           <DropdownMenu.Item className="menu-item">System Settings...</DropdownMenu.Item>
           <DropdownMenu.Item className="menu-item">App Store...</DropdownMenu.Item>
           <DropdownMenu.Separator className="menu-separator" />
-          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('boot')}>Restart...</DropdownMenu.Item>
-          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('boot')}>Shut Down...</DropdownMenu.Item>
+          <DropdownMenu.Item className="menu-item" onSelect={() => window.location.reload()}>Restart...</DropdownMenu.Item>
+          <DropdownMenu.Item className="menu-item" onSelect={() => window.location.reload()}>Shut Down...</DropdownMenu.Item>
           <DropdownMenu.Separator className="menu-separator" />
-          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('lock')}>Lock Screen</DropdownMenu.Item>
-          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('lock')}>Log Out Dhruba...</DropdownMenu.Item>
+          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('lock', true)}>Lock Screen</DropdownMenu.Item>
+          <DropdownMenu.Item className="menu-item" onSelect={() => setPhase('lock', false)}>Log Out Dhruba...</DropdownMenu.Item>
         </MenuWrapper>
 
         <span className="px-3 font-bold">{activeApp?.label || 'Finder'}</span>
