@@ -14,7 +14,7 @@ export default function DesktopIcon({ appId, label, onDoubleClick }: DesktopIcon
 
   return (
     <div 
-      className={`flex flex-col items-center justify-start w-24 h-28 pt-2 rounded-lg cursor-pointer transition-colors ${selected ? 'bg-blue-500/30 border border-blue-400/50' : 'hover:bg-white/10'}`}
+      className={`flex flex-col items-center justify-start w-24 h-28 pt-2 rounded-lg cursor-pointer transition-colors pointer-events-auto ${selected ? 'bg-blue-500/30 border border-blue-400/50' : 'hover:bg-white/10'}`}
       onClick={() => setSelected(true)}
       onBlur={() => setSelected(false)}
       onDoubleClick={onDoubleClick}
