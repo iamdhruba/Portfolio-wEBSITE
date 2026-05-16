@@ -1,6 +1,9 @@
 import React from 'react';
+import { useOSStore } from '@/store/useOSStore';
 
 export default function ResumeApp() {
+  const user = useOSStore((state) => state.user);
+
   return (
     <div className="flex h-full w-full flex-col bg-[#050505] font-sans">
       {/* High-End Toolbar */}
@@ -9,31 +12,25 @@ export default function ResumeApp() {
           <div className="h-2 w-2 rounded-full bg-red-500" />
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">resume.pdf</span>
         </div>
-        <a 
-          href="/resume.pdf"
-          download="resume.pdf"
+        <button 
+          onClick={() => window.print()}
           className="rounded-full bg-purple-600 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white hover:bg-purple-500 transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)]"
         >
           Download PDF
-        </a>
+        </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-neutral-100 hide-scrollbar">
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-neutral-100 hide-scrollbar resume-print-area">
         {/* Resume Paper Form */}
         <div className="mx-auto max-w-[800px] bg-white p-8 md:p-12 shadow-2xl text-black">
           
           {/* Header */}
-          <div className="flex flex-col md:flex-row items-center gap-6 mb-8 border-b pb-8">
-            <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-gray-100 flex-shrink-0 bg-gray-50">
-              <img src="/image/pp.jpeg" alt="Profile" className="w-full h-full object-cover" />
-            </div>
-            <div className="text-center md:text-left flex-1">
-              <h1 className="text-4xl font-bold mb-1">Dhruba Raj Chaudhary</h1>
-              <p className="text-gray-600 mb-2 font-medium">Full Stack Developer</p>
-              <p className="text-[13px] text-gray-500 max-w-md">
-                dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
-              </p>
-            </div>
+          <div className="text-center mb-8 border-b pb-8">
+            <h1 className="text-4xl font-bold mb-1">{user.name}</h1>
+            <p className="text-gray-600 mb-2 font-medium">{user.description}</p>
+            <p className="text-[13px] text-gray-500">
+              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba | github.com/iamdhruba
+            </p>
           </div>
 
           {/* Personal Statement */}
@@ -48,7 +45,7 @@ export default function ResumeApp() {
           <div className="mb-5">
             <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Education</h2>
             <div className="flex justify-between items-baseline">
-              <h3 className="font-bold text-[14px]">Tribhuvan University, <span className="font-normal">Kathmandu, Nepal</span></h3>
+              <h3 className="text-[15px] font-bold">Tribhuvan University</h3>
               <span className="text-[13px]">2020 – 2024</span>
             </div>
             <p className="text-[13px] uppercase mt-1">Bachelor in Computer Science and Information Technology (BSc. CSIT)</p>
@@ -58,23 +55,18 @@ export default function ResumeApp() {
             </p>
           </div>
 
-          {/* Work Experience */}
+          {/* Experience */}
           <div className="mb-5">
-            <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Work Experience</h2>
-            
-            <div className="mb-4">
-              <div className="flex justify-between items-baseline">
-                <h3 className="font-bold text-[14px]">Freelance Full Stack Developer</h3>
-                <span className="text-[13px]">2022 – Present</span>
-              </div>
-              <p className="text-[13px] italic mb-1 text-gray-600">Kathmandu, Nepal</p>
-              <ul className="list-disc list-outside ml-4 text-[13px] space-y-1">
-                <li>Architected and deployed the Trust Nepal Escrow mobile platform using Flutter and Firebase, achieving 99.9% uptime.</li>
-                <li>Developed a robust administrative dashboard for real-time transaction monitoring and dispute resolution.</li>
-                <li>Engineered high-performance web solutions using Next.js 14+ and Tailwind CSS, focusing on accessibility and Core Web Vitals.</li>
-                <li>Integrated secure payment gateways and multi-factor authentication systems for various client applications.</li>
-              </ul>
+            <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Experience</h2>
+            <div className="flex justify-between items-baseline">
+              <h3 className="text-[15px] font-bold">Freelance Full Stack Developer</h3>
+              <span className="text-[13px]">2022 – Present</span>
             </div>
+            <ul className="list-disc list-outside ml-4 mt-2 text-[13px] space-y-1">
+              <li>Architected and deployed end-to-end web and mobile applications for diverse clients.</li>
+              <li>Integrated secure payment gateways (eSewa) and real-time communication protocols (Socket.io).</li>
+              <li>Optimized application performance, achieving significant reductions in load times and resource usage.</li>
+            </ul>
           </div>
 
           {/* Projects */}
@@ -102,17 +94,46 @@ export default function ResumeApp() {
             </ul>
           </div>
 
-          {/* Languages & Technologies */}
+          {/* Technical Skills */}
           <div>
-            <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Languages & Technologies</h2>
-            <ul className="list-disc list-outside ml-4 text-[13px] space-y-1">
-              <li><strong>Languages:</strong> JavaScript, TypeScript, Dart, HTML, CSS, SQL</li>
-              <li><strong>Technologies:</strong> React, Next.js, Node.js, Express, Flutter, MongoDB, Firebase, Tailwind CSS, Git</li>
-            </ul>
+            <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Technical Skills</h2>
+            <div className="grid grid-cols-2 gap-y-2 text-[13px]">
+              <div><span className="font-bold">Languages:</span> JavaScript (ES6+), TypeScript, Dart, HTML5, CSS3</div>
+              <div><span className="font-bold">Frameworks/Libraries:</span> React, Next.js, Flutter, Node.js, Express, Tailwind CSS</div>
+              <div><span className="font-bold">Databases:</span> MongoDB, PostgreSQL, Firebase, SQLite</div>
+              <div><span className="font-bold">Tools/Others:</span> Git, Docker, REST APIs, Socket.io, eSewa SDK</div>
+            </div>
           </div>
 
         </div>
       </div>
+
+      <style jsx global>{`
+        @media print {
+          body * {
+            visibility: hidden;
+          }
+          .resume-print-area, .resume-print-area * {
+            visibility: visible;
+          }
+          .resume-print-area {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            background: white !important;
+          }
+          .resume-print-area .shadow-2xl {
+            shadow: none !important;
+            box-shadow: none !important;
+          }
+          .hide-scrollbar {
+            overflow: visible !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

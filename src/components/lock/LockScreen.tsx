@@ -4,6 +4,7 @@ import { useOSStore } from '@/store/useOSStore';
 
 export default function LockScreen() {
   const setPhase = useOSStore((state) => state.setPhase);
+  const user = useOSStore((state) => state.user);
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -49,11 +50,11 @@ export default function LockScreen() {
         
         <div className="flex flex-col items-center space-y-4">
           <div className="h-24 w-24 overflow-hidden rounded-full ring-2 ring-white/40 bg-white/10">
-            <img src="/image/pp.jpeg" alt="Profile" className="h-full w-full object-cover" />
+            <img src={user.profilePic} alt="Profile" className="h-full w-full object-cover" />
           </div>
           <div className="text-center">
-            <h1 className="text-2xl font-medium tracking-wide">Dhruba Raj Chaudhary</h1>
-            <p className="text-sm opacity-60">Full Stack Developer</p>
+            <h1 className="text-2xl font-medium tracking-wide">{user.name}</h1>
+            <p className="text-sm opacity-60">{user.description}</p>
           </div>
         </div>
       </div>

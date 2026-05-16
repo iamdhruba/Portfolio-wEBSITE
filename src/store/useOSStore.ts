@@ -15,9 +15,15 @@ interface OSState {
   contextMenu: ContextMenuState | null;
   dockIconRects: Record<string, { x: number, y: number, width: number, height: number }>;
 
+  user: {
+    name: string;
+    description: string;
+    profilePic: string;
+  };
   setPhase: (phase: 'boot' | 'lock' | 'desktop') => void;
   setTheme: (theme: 'dark' | 'light') => void;
   setWallpaper: (wallpaper: WallpaperID) => void;
+  setUser: (user: Partial<OSState['user']>) => void;
   setActiveApp: (appId: AppID | null) => void;
   addOpenApp: (appId: AppID) => void;
   removeOpenApp: (appId: AppID) => void;
@@ -37,10 +43,16 @@ export const useOSStore = create<OSState>((set) => ({
   notificationCenterOpen: false,
   contextMenu: null,
   dockIconRects: {},
+  user: {
+    name: 'Dhruba Raj Chaudhary',
+    description: 'Full Stack Developer',
+    profilePic: '/image/pp.jpeg',
+  },
 
   setPhase: (phase) => set({ phase }),
   setTheme: (theme) => set({ theme }),
   setWallpaper: (wallpaper) => set({ wallpaper }),
+  setUser: (userData) => set((state) => ({ user: { ...state.user, ...userData } })),
   setActiveApp: (activeApp) => set({ activeApp }),
   addOpenApp: (appId) => set((state) => ({ openApps: state.openApps.includes(appId) ? state.openApps : [...state.openApps, appId] })),
   removeOpenApp: (appId) => set((state) => ({ openApps: state.openApps.filter((id) => id !== appId) })),
