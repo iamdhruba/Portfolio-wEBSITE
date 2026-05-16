@@ -8,7 +8,17 @@ export default function LockScreen() {
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
+    
+    // Add global key listener to unlock
+    const handleGlobalKey = (e: KeyboardEvent) => {
+      handleUnlock();
+    };
+    window.addEventListener('keydown', handleGlobalKey);
+
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('keydown', handleGlobalKey);
+    };
   }, []);
 
   const handleUnlock = () => {
