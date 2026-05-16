@@ -112,13 +112,19 @@ export default function ResumeApp() {
         @media print {
           @page {
             size: A4;
-            margin: 0;
+            margin: 10mm;
           }
           html, body {
-            height: auto;
+            height: auto !important;
             overflow: visible !important;
             background: white !important;
           }
+          /* Hide everything except print area */
+          body > *:not(#__next), #__next > *:not(main), main > *:not(.resume-print-area) {
+             /* This is too specific and might fail if structure differs */
+          }
+          
+          /* Better approach: hide all siblings of the print area ancestors */
           body * {
             visibility: hidden;
           }
@@ -130,13 +136,13 @@ export default function ResumeApp() {
             left: 0;
             top: 0;
             width: 100%;
-            padding: 20mm !important;
+            padding: 0 !important;
             margin: 0 !important;
             background: white !important;
             box-shadow: none !important;
           }
-          .shadow-2xl {
-            box-shadow: none !important;
+          .hide-scrollbar {
+            overflow: visible !important;
           }
         }
       `}</style>
