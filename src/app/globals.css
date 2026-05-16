@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Syne:wght@400..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sf: var(--font-sf);
+  --font-mono: var(--font-mono);
+  --font-playfair: "Playfair Display", serif;
+  --font-syne: "Syne", sans-serif;
+  
+  --blur-macos: 20px;
+  --blur-heavy: 40px;
+  
+  --shadow-window: 0 22px 70px rgba(0,0,0,0.6);
+  --shadow-dock: 0 4px 30px rgba(0,0,0,0.3);
+  --shadow-traffic: 0 1px 3px rgba(0,0,0,0.4);
+  
+  --radius-window: 12px;
+  --radius-app: 20px;
+  
+  --animate-bounce-dock: bounceDock 0.6s ease forwards;
+  --animate-slide-up-dock: slideUpDock 0.4s var(--transition-spring);
+  --animate-fade-in: fadeIn 0.3s ease;
+  --animate-scale-in: scaleIn 0.2s var(--transition-spring);
+  --animate-notification: slideNotif 0.35s var(--transition-spring);
+}
+
+:root {
+  /* macOS Ventura palette */
+  --macos-bg:           #1e1e1e;
+  --dock-bg:            rgba(255,255,255,0.18);
+  --dock-border:        rgba(255,255,255,0.25);
+  --menubar-bg:         rgba(30,30,30,0.72);
+  --menubar-text:       rgba(255,255,255,0.92);
+  --window-bg:          rgba(28,28,30,0.92);
+  --window-header:      rgba(44,44,46,0.95);
+  --window-border:      rgba(255,255,255,0.08);
+  --traffic-red:        #ff5f57;
+  --traffic-yellow:     #febc2e;
+  --traffic-green:      #28c840;
+  --accent:             #0a84ff;      /* macOS Blue */
+  --accent-secondary:   #30d158;      /* macOS Green */
+  --text-primary:       rgba(255,255,255,0.92);
+  --text-secondary:     rgba(255,255,255,0.55);
+  --text-tertiary:      rgba(255,255,255,0.30);
+  --blur-amount:        20px;
+  --radius-window:      12px;
+  --radius-app:         20px;
+  --shadow-window:      0 22px 70px rgba(0,0,0,0.6);
+  --shadow-dock:        0 4px 30px rgba(0,0,0,0.3);
+  --transition-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --font-sf:            'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:          'JetBrains Mono', 'Fira Code', monospace;
+  --menubar-height:     28px;
+  --dock-height:        72px;
+  --dock-icon-size:     52px;
+  --dock-icon-max:      72px;   /* magnified size */
+}
+
+/* Light mode override */
+[data-theme="light"] {
+  --menubar-bg:    rgba(240,240,240,0.82);
+  --menubar-text:  rgba(0,0,0,0.85);
+  --window-bg:     rgba(242,242,247,0.95);
+  --window-header: rgba(222,222,227,0.98);
+  --dock-bg:       rgba(0,0,0,0.12);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--macos-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sf);
+  user-select: none;
+}
+
+.glass {
+  background: var(--dock-bg);
+  backdrop-filter: blur(var(--blur-amount)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(180%);
+  border: 1px solid var(--dock-border);
+}
+
+@keyframes bounceDock {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+@keyframes slideUpDock {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideNotif {
+  from { transform: translateX(120%); }
+  to { transform: translateX(0); }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Menu Bar Styles */
+.menu-content {
+  min-width: 220px;
+  background: rgba(30, 30, 30, 0.82);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  animation: scaleIn 0.15s ease-out;
+  z-index: 10000;
+}
+
+.menu-item {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 6px;
+  outline: none;
+  cursor: default;
+  color: rgba(255, 255, 255, 0.95);
+  transition: all 0.1s ease;
+}
+
+.menu-item:hover, .menu-item[data-highlighted] {
+  background: #007aff;
+  color: white;
+}
+
+.menu-separator {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 5px -5px;
+}
