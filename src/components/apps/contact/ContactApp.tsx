@@ -50,21 +50,30 @@ export default function ContactApp() {
     setTimeout(() => {
       setIsTyping(false);
       
-      let replyText = "I'm not sure I understand. You can ask me about my skills, projects, or how to hire me!";
+      let replyText = "That's interesting! I'd love to chat more about that. You can ask me about my specific tech stack, the projects I've built, or how to get in touch for a collaboration.";
       const lowerInput = userText.toLowerCase();
 
-      if (lowerInput.includes('skill') || lowerInput.includes('tech')) {
-        replyText = "I specialize in Flutter, React, Next.js, Node.js, and Firebase. I love building scalable applications!";
-      } else if (lowerInput.includes('experience') || lowerInput.includes('work')) {
-        replyText = "I have experience working as a full-stack developer, creating platforms like Trust Nepal Escrow and Job Portal.";
-      } else if (lowerInput.includes('education') || lowerInput.includes('study')) {
-        replyText = "I am currently pursuing a BSc. CSIT at Patan Multiple Campus (Tribhuvan University).";
-      } else if (lowerInput.includes('contact') || lowerInput.includes('email') || lowerInput.includes('hire')) {
-        replyText = "You can reach me at dhrubarajchaudhary498@gmail.com or connect with me on LinkedIn!";
-      } else if (lowerInput.includes('project') || lowerInput.includes('portfolio')) {
-        replyText = "Check out the Projects app on my desktop to see my work, including Escrow Nepal and Typewriter App!";
-      } else if (lowerInput.includes('hello') || lowerInput.includes('hi') || lowerInput.includes('hey')) {
-        replyText = "Hello! How can I help you today?";
+      const keywords = {
+        skills: ["skill", "tech", "stack", "language", "coding", "program"],
+        experience: ["experience", "work", "job", "career", "history"],
+        education: ["education", "study", "college", "university", "degree", "csit"],
+        contact: ["contact", "email", "hire", "reach", "message", "linkedin"],
+        projects: ["project", "portfolio", "build", "make", "create", "app"],
+        greetings: ["hello", "hi", "hey", "yo", "morning", "evening"]
+      };
+
+      if (keywords.skills.some(k => lowerInput.includes(k))) {
+        replyText = "I'm a Full Stack specialist. My core arsenal includes React, Next.js, and Node.js for web, plus Flutter for high-performance mobile apps. I also have deep experience with Firebase, MongoDB, and SQL databases.";
+      } else if (keywords.experience.some(k => lowerInput.includes(k))) {
+        replyText = "I've been working as a freelance Full Stack developer since 2022. I've delivered complex platforms like the Trust Nepal Escrow system and various modern job portals, focusing on security and fluid user experiences.";
+      } else if (keywords.education.some(k => lowerInput.includes(k))) {
+        replyText = "I am currently pursuing my Bachelor in Computer Science and Information Technology (BSc. CSIT) at Patan Multiple Campus, Tribhuvan University. My studies focus on software architecture and algorithmic efficiency.";
+      } else if (keywords.contact.some(k => lowerInput.includes(k))) {
+        replyText = "The best way to reach me is via email at dhrubarajchaudhary498@gmail.com. You can also find me on LinkedIn (linkedin.com/in/dhrubarajchaudhary) for professional inquiries!";
+      } else if (keywords.projects.some(k => lowerInput.includes(k))) {
+        replyText = "You can see my highlighted work in the 'Projects' app on the desktop. I'm particularly proud of my Escrow Nepal system and this very macOS Portfolio OS you're interacting with right now!";
+      } else if (keywords.greetings.some(k => lowerInput.includes(k))) {
+        replyText = "Hello! I'm Dhruba's AI assistant. I'm here to help you navigate his work and background. What would you like to know?";
       }
 
       const reply: Message = { 

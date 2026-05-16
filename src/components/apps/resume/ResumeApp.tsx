@@ -45,9 +45,10 @@ export default function ResumeApp() {
               <h3 className="font-bold text-[14px]">Tribhuvan University, <span className="font-normal">Kathmandu, Nepal</span></h3>
               <span className="text-[13px]">2020 – 2024</span>
             </div>
-            <p className="text-[13px] uppercase mt-1">BSc Computer Science</p>
+            <p className="text-[13px] uppercase mt-1">Bachelor in Computer Science and Information Technology (BSc. CSIT)</p>
+            <p className="text-[13px] mt-1 italic text-gray-600">Patan Multiple Campus</p>
             <p className="text-[13px] mt-1">
-              RELEVANT COURSEWORK: Data Structures, Algorithms, Software Engineering, Web Development, Database Management.
+              RELEVANT COURSEWORK: Software Engineering, Web Technologies, Database Systems, Data Structures & Algorithms, Network Security.
             </p>
           </div>
 
@@ -60,12 +61,12 @@ export default function ResumeApp() {
                 <h3 className="font-bold text-[14px]">Freelance Full Stack Developer</h3>
                 <span className="text-[13px]">2022 – Present</span>
               </div>
-              <p className="text-[13px] italic mb-1">Self-Employed, Kathmandu, Nepal</p>
+              <p className="text-[13px] italic mb-1 text-gray-600">Kathmandu, Nepal</p>
               <ul className="list-disc list-outside ml-4 text-[13px] space-y-1">
-                <li>Built a highly secure Escrow platform using Flutter and Firebase, handling real-time user authentication and financial data tracking.</li>
-                <li>Optimized backend queries in MongoDB, reducing latency by 30% and improving overall application performance.</li>
-                <li>Developed premium UI components with Framer Motion and Tailwind CSS for various client portfolios, resulting in increased engagement.</li>
-                <li>Transitioned authentication flows from phone-based OTP to secure Gmail integrations using Nodemailer and custom SMTP solutions.</li>
+                <li>Architected and deployed the Trust Nepal Escrow mobile platform using Flutter and Firebase, achieving 99.9% uptime.</li>
+                <li>Developed a robust administrative dashboard for real-time transaction monitoring and dispute resolution.</li>
+                <li>Engineered high-performance web solutions using Next.js 14+ and Tailwind CSS, focusing on accessibility and Core Web Vitals.</li>
+                <li>Integrated secure payment gateways and multi-factor authentication systems for various client applications.</li>
               </ul>
             </div>
           </div>
@@ -73,15 +74,18 @@ export default function ResumeApp() {
           {/* Projects */}
           <div className="mb-5">
             <h2 className="text-[14px] font-bold text-gray-500 uppercase tracking-wider mb-2">Projects</h2>
-            <ul className="list-disc list-outside ml-4 text-[13px] space-y-2">
+            <ul className="list-disc list-outside ml-4 text-[13px] space-y-3">
               <li>
-                <strong>Escrow Nepal (Flutter, Firebase):</strong> Built a secure mobile app that interfaces with a custom backend to allow users to securely hold funds during transactions. Implemented secure email-based OTP verification.
+                <strong>Escrow Nepal (Flutter, Firebase):</strong> A secure, intermediary payment platform designed for P2P transactions. Features automated verification, real-time balance tracking, and end-to-end encryption.
               </li>
               <li>
-                <strong>macOS Portfolio OS (Next.js, Tailwind):</strong> Developed a highly interactive web portfolio mimicking the macOS interface. Built custom window management, draggable components, and a functional dynamic dock.
+                <strong>macOS Portfolio OS (Next.js, Framer Motion):</strong> A high-fidelity, interactive operating system experience built with React. Implements complex window management logic, spatial animations, and a responsive application registry.
               </li>
               <li>
-                <strong>Full-Stack Task Manager (MERN):</strong> Built and tested a robust backend API for task assignment and real-time updates using WebSockets and React.
+                <strong>Global Job Portal (Next.js, Prisma, PostgreSQL):</strong> A scalable employment platform with intelligent applicant matching, automated resume parsing, and employer analytics dashboard.
+              </li>
+              <li>
+                <strong>Himalayan Travel (React, GSAP):</strong> An immersive, animation-heavy travel discovery engine featuring 3D parallax effects and high-resolution media optimization.
               </li>
             </ul>
           </div>
