@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import MenuBar from '@/components/menubar/MenuBar';
 import Dock from '@/components/dock/Dock';
 import WindowManager from '@/components/window/WindowManager';
@@ -35,10 +36,17 @@ export default function Desktop() {
       className="relative h-full w-full overflow-hidden bg-black text-white select-none"
       onClick={handleDesktopClick}
     >
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
-        style={{ backgroundImage: `url('${(WALLPAPER_MAP as any)[wallpaper] || wallpaper}')` }}
-      ></div>
+      {Object.entries(WALLPAPER_MAP).map(([id, url]) => (
+        <Image
+          key={id}
+          src={url}
+          alt={id}
+          fill
+          priority={true}
+          sizes="100vw"
+          className={`object-cover bg-cover object-center transition-opacity duration-1000 ease-in-out ${wallpaper === id ? 'opacity-100 z-0' : 'opacity-0 z-0 pointer-events-none'}`}
+        />
+      ))}
       
       
       <MenuBar />

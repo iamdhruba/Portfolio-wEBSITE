@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { APP_REGISTRY } from '@/data/apps';
 import { useOSStore } from '@/store/useOSStore';
@@ -71,9 +72,9 @@ export default function DesktopIcon({ appId, label, onDoubleClick, containerRef 
         boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
       }}
     >
-      <div className="w-16 h-16 drop-shadow-2xl flex items-center justify-center pointer-events-none group-active:brightness-75 transition-all">
+      <div className="relative w-16 h-16 drop-shadow-2xl flex items-center justify-center pointer-events-none group-active:brightness-75 transition-all">
         {iconUrl ? (
-          <img src={iconUrl} alt={label} className="w-full h-full object-contain" draggable={false} />
+          <Image src={iconUrl} alt={label} fill priority sizes="64px" className="object-contain" draggable={false} />
         ) : (
           <div className="w-12 h-12 bg-gray-500 rounded-xl" />
         )}

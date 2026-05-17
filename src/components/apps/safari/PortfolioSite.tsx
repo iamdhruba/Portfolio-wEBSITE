@@ -811,8 +811,9 @@ function TechMarquee() {
 /* ── Footer ── */
 function Footer() {
   const [isHovered, setIsHovered] = useState(false);
-  const email = "hello@dhruba.studio";
-  const [displayText, setDisplayText] = useState("Let's Talk");
+  const email = "dhrubaraj977@gmail.com";
+  const targetText = "HELLO";
+  const [displayText, setDisplayText] = useState("Let's /n Talk");
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&*";
 
   useEffect(() => {
@@ -820,11 +821,11 @@ function Footer() {
     if (isHovered) {
       let iteration = 0;
       interval = setInterval(() => {
-        setDisplayText(email.split("").map((char, index) => {
-          if (index < iteration) return email[index];
+        setDisplayText(targetText.split("").map((char, index) => {
+          if (index < iteration) return targetText[index];
           return chars[Math.floor(Math.random() * chars.length)];
         }).join(""));
-        if (iteration >= email.length) clearInterval(interval);
+        if (iteration >= targetText.length) clearInterval(interval);
         iteration += 1 / 3;
       }, 30);
     } else {
@@ -847,7 +848,7 @@ function Footer() {
             onMouseLeave={() => setIsHovered(false)}
             className="block group hover-trigger">
             <TypeReveal text="INITIATE_CONVERSATION" className="fd text-[10px] uppercase tracking-[0.3em] font-bold text-[#d94a38] mb-6" />
-            <h2 className="fp text-[clamp(3rem,12vw,14rem)] leading-[0.8] font-black uppercase text-[#eaddcf] group-hover:text-[#d94a38] transition-colors duration-500 break-all max-w-[90vw]">
+            <h2 className="fp text-[clamp(1.5rem,5vw,5rem)] leading-[0.8] font-black uppercase text-[#eaddcf] group-hover:text-[#d94a38] transition-colors duration-500 whitespace-nowrap max-w-[90vw]">
               {displayText}
             </h2>
           </a>
@@ -876,7 +877,7 @@ function Footer() {
             <span className="fd text-[9px] uppercase tracking-[0.3em] font-bold text-white/30">Connect</span>
             <div className="flex flex-col gap-2">
               <a href="https://github.com/iamdhruba" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">Github</a>
-              <a href="https://www.linkedin.com/in/dhruba-raj-chaudhary-bb7b392ba/" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/saydhruba" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">LinkedIn</a>
               <a href="https://www.instagram.com/saydhruba" target="_blank" rel="noopener noreferrer" className="fd text-xs font-bold uppercase tracking-wider hover:text-[#d94a38] transition-colors">Instagram</a>
             </div>
           </div>

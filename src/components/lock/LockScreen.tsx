@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useOSStore } from '@/store/useOSStore';
 
@@ -49,7 +50,16 @@ export default function LockScreen() {
       onKeyDown={handleUnlock}
       tabIndex={0}
     >
-      <div className="absolute inset-0 bg-[url('/wallpapers/ventura-day.jpg')] bg-cover bg-center" style={{ filter: 'blur(40px) brightness(0.7)' }}></div>
+      <div className="absolute inset-0 z-0" style={{ filter: 'blur(40px) brightness(0.7)' }}>
+        <Image
+          src="/wallpapers/ventura-day.jpg"
+          alt="Lockscreen Wallpaper"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       
       <div className="relative z-10 flex flex-col items-center text-white">
         <div className="mb-8 text-center">
@@ -58,8 +68,8 @@ export default function LockScreen() {
         </div>
         
         <div className="flex flex-col items-center space-y-4">
-          <div className="h-24 w-24 overflow-hidden rounded-full ring-2 ring-white/40 bg-white/10">
-            <img src={user.profilePic} alt="Profile" className="h-full w-full object-cover" />
+          <div className="relative h-24 w-24 overflow-hidden rounded-full ring-2 ring-white/40 bg-white/10">
+            <Image src={user.profilePic} alt="Profile" fill priority sizes="96px" className="object-cover" />
           </div>
           <div className="text-center">
             <h1 className="text-2xl font-medium tracking-wide">{user.name}</h1>

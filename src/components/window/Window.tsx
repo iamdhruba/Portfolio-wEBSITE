@@ -68,40 +68,35 @@ export default function Window({ win }: any) {
       disableDragging={win.isMaximized}
     >
       <motion.div
-        layout
         className="glass flex h-full w-full flex-col overflow-hidden rounded-[12px] shadow-window"
         initial={{ 
           x: startX, 
           y: startY, 
           scale: startScale, 
-          opacity: 0,
-          filter: 'blur(10px)'
+          opacity: 0
         }}
         animate={{ 
           x: 0, 
           y: 0, 
           scale: 1, 
-          opacity: 1,
-          filter: 'blur(0px)'
+          opacity: 1
         }}
         exit={{ 
           x: startX, 
           y: startY, 
           scale: startScale, 
-          opacity: 0,
-          filter: 'blur(10px)'
+          opacity: 0
         }}
         transition={{ 
           type: 'spring', 
           stiffness: 260, 
-          damping: 26,
-          layout: { type: 'spring', stiffness: 300, damping: 30 }
+          damping: 26
         }}
         onClick={handleFocus}
         style={{ backgroundColor: 'var(--window-bg)' }}
       >
         <div 
-          className="window-titlebar flex h-[40px] w-full items-center px-4 relative z-50 shrink-0"
+          className="window-titlebar flex h-[40px] w-full items-center px-4 relative z-50 shrink-0 rounded-t-[12px]"
           style={{ backgroundColor: 'var(--window-header)', borderBottom: '1px solid var(--window-border)' }}
         >
           <div className="group flex items-center space-x-2">
@@ -130,7 +125,7 @@ export default function Window({ win }: any) {
           <div className="w-14" />
         </div>
         
-        <div className="flex-1 overflow-hidden relative bg-[#0f0f0f]">
+        <div className="flex-1 overflow-hidden relative bg-[#0f0f0f] rounded-b-[12px]">
           {win.appId === 'safari' && <Safari />}
           {win.appId === 'projects' && <ProjectsApp />}
           {win.appId === 'resume' && <ResumeApp />}

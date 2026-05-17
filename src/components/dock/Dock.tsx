@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef } from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue, useTransform, useSpring, MotionValue } from 'framer-motion';
 import { useOSStore } from '@/store/useOSStore';
 import { useWindowStore } from '@/store/useWindowStore';
@@ -76,10 +77,13 @@ function DockItem({ app, mouseX, isOpen, isActive, onClick }: { app: any, mouseX
           {app.label}
         </div>
         
-        <img 
+        <Image 
           src={app.icon} 
           alt={app.label} 
-          className="h-full w-full object-contain drop-shadow-md transition-transform active:scale-90" 
+          fill
+          priority
+          sizes="80px"
+          className="object-contain drop-shadow-md transition-transform active:scale-90" 
           draggable={false} 
         />
         
