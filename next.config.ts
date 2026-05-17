@@ -7,7 +7,7 @@ const cspHeader = `
   img-src 'self' blob: data: https://images.unsplash.com https://raw.githubusercontent.com;
   font-src 'self' data: https://fonts.gstatic.com;
   connect-src 'self' https://vitals.vercel-insights.com;
-  frame-src 'self';
+  frame-src 'self' https://github1s.com https://stackblitz.com;
   object-src 'none';
   base-uri 'self';
   form-action 'self';
