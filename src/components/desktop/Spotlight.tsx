@@ -16,7 +16,7 @@ export default function Spotlight() {
   // Focus input on open
   useEffect(() => {
     if (spotlightOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50);
+      setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 50);
       setQuery('');
       setSelectedIndex(0);
     }

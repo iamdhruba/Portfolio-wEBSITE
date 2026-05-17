@@ -77,7 +77,7 @@ export default function ContactApp() {
       } else if (keywords.education.some(k => lowerInput.includes(k))) {
         replyText = "I am currently pursuing my Bachelor in Computer Science and Information Technology (BSc. CSIT) at Ambikeshwari Campus, Tribhuvan University. My studies focus on software architecture and algorithmic efficiency.";
       } else if (keywords.contact.some(k => lowerInput.includes(k))) {
-        replyText = "The best way to reach me is via email at dhrubarajchaudhary498@gmail.com or via phone at +977-9705402345 for any professional inquiries!";
+        replyText = "The best way to reach me is via email at dhrubaraj977@gmail.com or via phone at +977-9705402345 for any professional inquiries!";
       } else if (keywords.projects.some(k => lowerInput.includes(k))) {
         replyText = "You can see my highlighted work in the 'Projects' app on the desktop. I'm particularly proud of my Escrow Nepal system and this very macOS Portfolio OS you're interacting with right now!";
       } else if (keywords.greetings.some(k => lowerInput.includes(k))) {
@@ -126,7 +126,7 @@ export default function ContactApp() {
               type="text" 
               placeholder="Search" 
               className={`w-full rounded-md py-1 pl-8 pr-3 text-[13px] outline-none transition-all ${
-                true 
+                isDark 
                   ? 'bg-white/10 text-white placeholder:text-white/40 focus:bg-white/20 focus:ring-1 focus:ring-white/30' 
                   : 'bg-black/5 text-black placeholder:text-black/40 focus:bg-black/10 focus:ring-1 focus:ring-black/20'
               }`}
@@ -231,11 +231,11 @@ export default function ContactApp() {
               className="flex flex-col items-start mt-2"
             >
               <div className={`rounded-2xl px-4 py-3 flex items-center space-x-1.5 shadow-sm ${
-                true ? 'bg-white/10 ring-1 ring-white/5' : 'bg-black/5 ring-1 ring-black/5'
+                isDark ? 'bg-white/10 ring-1 ring-white/5' : 'bg-black/5 ring-1 ring-black/5'
               }`}>
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${true ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0s' }} />
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${true ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0.1s' }} />
-                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${true ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0.2s' }} />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${isDark ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0s' }} />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${isDark ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0.1s' }} />
+                <span className={`h-1.5 w-1.5 rounded-full animate-bounce ${isDark ? 'bg-white/50' : 'bg-black/50'}`} style={{ animationDelay: '0.2s' }} />
               </div>
             </motion.div>
           )}
@@ -243,11 +243,11 @@ export default function ContactApp() {
 
         {/* Input Bar */}
         <div className={`p-4 transition-colors duration-300 ${
-          true ? 'bg-black/20 border-t border-white/5' : 'bg-white/40 border-t border-black/5'
+          isDark ? 'bg-black/20 border-t border-white/5' : 'bg-white/40 border-t border-black/5'
         }`}>
           <div className="flex items-center space-x-3">
             <button className={`p-1.5 rounded-full transition-colors ${
-              true ? 'text-white/50 hover:bg-white/10' : 'text-black/50 hover:bg-black/5'
+              isDark ? 'text-white/50 hover:bg-white/10' : 'text-black/50 hover:bg-black/5'
             }`}>
               <Plus size={20} />
             </button>
@@ -259,18 +259,18 @@ export default function ContactApp() {
                 onKeyDown={e => e.key === 'Enter' && handleSend()}
                 placeholder="iMessage"
                 className={`w-full rounded-full py-1.5 pl-4 pr-20 text-[14px] outline-none transition-all shadow-sm ${
-                  true 
+                  isDark 
                     ? 'bg-white/10 border border-white/10 text-white placeholder:text-white/40 focus:border-white/30 focus:bg-white/20' 
                     : 'bg-white/80 border border-black/10 text-black placeholder:text-black/40 focus:border-black/30 focus:bg-white'
                 }`}
               />
               <div className={`absolute right-3 flex items-center space-x-2 ${
-                true ? 'text-white/40' : 'text-black/40'
+                isDark ? 'text-white/40' : 'text-black/40'
               }`}>
-                <button className={`transition-colors ${true ? 'hover:text-white/80' : 'hover:text-black/80'}`}>
+                <button className={`transition-colors ${isDark ? 'hover:text-white/80' : 'hover:text-black/80'}`}>
                   <Mic size={16} />
                 </button>
-                <button className={`transition-colors ${true ? 'hover:text-white/80' : 'hover:text-black/80'}`}>
+                <button className={`transition-colors ${isDark ? 'hover:text-white/80' : 'hover:text-black/80'}`}>
                   <Smile size={16} />
                 </button>
               </div>

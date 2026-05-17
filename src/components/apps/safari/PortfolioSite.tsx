@@ -22,7 +22,6 @@ export default function PortfolioSite() {
     <div ref={containerRef} className="relative antialiased bg-[#eaddcf] text-[#0f0f0f] w-full h-full overflow-y-auto overflow-x-hidden custom-cursor-wrapper [container-type:inline-size] pb-0 hide-scrollbar"
       style={{ fontFamily: "'Inter', sans-serif" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,400;12..96,600;12..96,800&family=Inter:wght@300;400;500;600&display=swap');
         .fp { font-family: 'Bricolage Grotesque', sans-serif; letter-spacing: -0.04em; }
         .fd { font-family: 'Inter', sans-serif; }
         .custom-cursor-wrapper, .custom-cursor-wrapper * { cursor: none !important; }
@@ -36,8 +35,8 @@ export default function PortfolioSite() {
         @keyframes scan { from { top: -10%; } to { top: 110%; } }
         .scan-line { position: absolute; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #d94a38, transparent); opacity: 0.1; z-index: 50; pointer-events: none; animation: scan 8s linear infinite; }
         
-        /* Cinematic Grain */
-        .grain-overlay { position: fixed; inset: -50%; width: 200%; height: 200%; background-image: url('https://grainy-gradients.vercel.app/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 1000; animation: grain 8s steps(10) infinite; filter: contrast(120%) brightness(120%); }
+        /* Cinematic Grain — uses local /noise.svg to avoid external dependency */
+        .grain-overlay { position: fixed; inset: -50%; width: 200%; height: 200%; background-image: url('/noise.svg'); opacity: 0.04; pointer-events: none; z-index: 1000; animation: grain 8s steps(10) infinite; filter: contrast(120%) brightness(120%); }
         @keyframes grain { 
           0%, 100% { transform: translate(0, 0); }
           10% { transform: translate(-5%, -5%); }
@@ -71,6 +70,13 @@ export default function PortfolioSite() {
         }
         .holo-flicker { animation: flicker 4s linear infinite; }
         .holo-scan { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(15, 15, 15, 0.1) 50%); background-size: 100% 4px; pointer-events: none; }
+
+        /* Accessibility: Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          .fractal-container, .sphere-container, .grain-overlay, .scan-line,
+          .holo-flicker, .particle { animation: none !important; }
+          .fractal-container { transform: none; }
+        }
       `}</style>
 
       <div className="grain-overlay" />
@@ -108,7 +114,7 @@ function Preloader({ progress }: { progress: number }) {
       </div>
       <div className="absolute bottom-10 left-10 right-10 flex justify-between fd text-xs uppercase tracking-widest opacity-50">
         <span>Loading Experience</span>
-        <span>Dhruba ©2024</span>
+        <span>Dhruba ©2025</span>
       </div>
     </motion.div>
   );
@@ -169,7 +175,7 @@ function Nav() {
         <div className="fp text-xl font-bold uppercase tracking-tight">Dhruba</div>
       </div>
       <Magnetic>
-        <a href="mailto:dhrubarajchaudhary498@gmail.com"
+        <a href="mailto:dhrubaraj977@gmail.com"
           className="hover-trigger fd text-[10px] uppercase tracking-[0.2em] font-bold pointer-events-auto block px-4 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all">
           Available for Work
         </a>
@@ -226,6 +232,8 @@ function Hero({ containerRef }: { containerRef: React.RefObject<HTMLDivElement |
   const expansion = useSpring(useTransform(mouseX, [0, 1000], [1, 2.5]), { stiffness: 30, damping: 10 });
   const rotateX = useSpring(useTransform(mouseY, [0, 1000], [15, -15]), { stiffness: 40, damping: 15 });
   const rotateY = useSpring(useTransform(mouseX, [0, 1000], [-15, 15]), { stiffness: 40, damping: 15 });
+  // Fix: extract useTransform from JSX to satisfy Rules of Hooks
+  const middleScale = useTransform(expansion, [1, 2.5], [0.7, 1.2]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     mouseX.set(e.clientX);
@@ -266,7 +274,7 @@ function Hero({ containerRef }: { containerRef: React.RefObject<HTMLDivElement |
             <motion.div
               animate={{ rotateY: -360, rotateX: 360 }}
               transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-              style={{ scale: useTransform(expansion, [1, 2.5], [0.7, 1.2]) }}
+              style={{ scale: middleScale }}
               className="fractal-box accent w-[70%] h-[70%]"
             >
               {[0, 90, 180, 270].map(deg => (
@@ -639,6 +647,10 @@ function ServicesList() {
     mouseY.set(e.clientY - rect.top);
   };
 
+  // Fix: extract useSpring from JSX to satisfy Rules of Hooks
+  const springPreviewX = useSpring(mouseX, { stiffness: 100, damping: 20 });
+  const springPreviewY = useSpring(mouseY, { stiffness: 100, damping: 20 });
+
   return (
     <section
       onMouseMove={handleMouseMove}
@@ -647,8 +659,8 @@ function ServicesList() {
       {/* Floating Preview Image */}
       <motion.div
         style={{
-          x: useSpring(mouseX, { stiffness: 100, damping: 20 }),
-          y: useSpring(mouseY, { stiffness: 100, damping: 20 }),
+          x: springPreviewX,
+          y: springPreviewY,
           pointerEvents: 'none'
         }}
         className="absolute w-64 h-40 z-50 overflow-hidden rounded-lg shadow-2xl opacity-0 hidden @md:block"
@@ -813,7 +825,7 @@ function Footer() {
   const [isHovered, setIsHovered] = useState(false);
   const email = "dhrubaraj977@gmail.com";
   const targetText = "HELLO";
-  const [displayText, setDisplayText] = useState("Let's /n Talk");
+  const [displayText, setDisplayText] = useState("Let's Talk");
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#%&*";
 
   useEffect(() => {
@@ -860,7 +872,7 @@ function Footer() {
             <span className="fd text-[10px] uppercase tracking-widest font-bold">Transmission Protocol: Active</span>
           </div>
           <p className="fd text-xs text-white/40 leading-relaxed">
-            Currently accepting select high-impact projects for Q3/Q4 2024. Average response time: <span className="text-white">4.2 hours</span>.
+            Currently accepting select high-impact projects for Q3/Q4 2025. Average response time: <span className="text-white">4.2 hours</span>.
           </p>
           <div className="flex flex-col gap-1 fd text-[9px] font-bold text-white/20 uppercase tracking-[0.2em]">
             <span>Encryption: AES-256</span>
@@ -911,7 +923,7 @@ function Footer() {
         </div>
 
         <div className="flex flex-col items-end gap-2">
-          <div className="fd text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">Dhruba © 2024</div>
+          <div className="fd text-[10px] font-bold uppercase tracking-[0.4em] text-white/20">Dhruba © 2025</div>
           <div className="fd text-[8px] font-black uppercase tracking-widest text-[#d94a38]">Crafted for Excellence</div>
         </div>
       </div>

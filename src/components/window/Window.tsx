@@ -16,7 +16,9 @@ import VSCodeApp from '../apps/vscode/VSCodeApp';
 import SettingsApp from '../apps/settings/SettingsApp';
 import IPhoneFrame from '@/components/shared/IPhoneFrame';
 
-export default function Window({ win }: any) {
+import { WindowInstance } from '@/types/window';
+
+export default function Window({ win }: { win: WindowInstance }) {
   const { updateWindow, bringToFront, closeWindow, minimizeWindow, maximizeWindow } = useWindowStore();
   const setActiveApp = useOSStore(state => state.setActiveApp);
 

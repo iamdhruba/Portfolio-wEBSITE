@@ -67,7 +67,7 @@ export default function NotesApp() {
     };
     setNotes(prev => [newNote, ...prev]);
     setActiveId(id);
-    setTimeout(() => textareaRef.current?.focus(), 50);
+    setTimeout(() => textareaRef.current?.focus({ preventScroll: true }), 50);
   };
 
   const deleteNote = (id: string) => {

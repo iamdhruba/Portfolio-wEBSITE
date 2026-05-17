@@ -10,7 +10,13 @@ export default function Terminal() {
   const [cmdHistory, setCmdHistory] = useState<string[]>([]);
   const [historyIdx, setHistoryIdx] = useState(-1);
   const terminalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const openWindow = useWindowStore(state => state.openWindow);
+
+  useEffect(() => {
+    // Focus terminal input with scroll prevention on load/render
+    inputRef.current?.focus({ preventScroll: true });
+  }, []);
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -60,7 +66,7 @@ export default function Terminal() {
         output = '[ SYSTEM ARCHIVES - SELECTED WORKS ]\n1. Trust Nepal Escrow  (2024) - Automated escrow system (Flutter, Firebase, Node.js)\n2. Focusflow           (2023) - Distraction-free task ecosystem (Dart, SQLite, Bloc)\n3. Confess Nepal       (2024) - Anonymous social platform (Next.js, PostgreSQL)\n4. Job Portal          (2024) - High-performance recruitment platform (Next.js, Prisma)\n5. Veg Typing          (2023) - Advanced transliteration engine (TypeScript, i18n)\n6. Loksewa Tayari      (2024) - Public Service exam prep platform (Flutter, Laravel, MySQL)\n\n* Type "open safari" to view full case studies.';
         break;
       case 'contact':
-        output = 'Email : dhrubarajchaudhary498@gmail.com\nGitHub: github.com/iamdhruba\nLinkedIn: linkedin.com/in/saydhruba';
+        output = 'Email : dhrubaraj977@gmail.com\nGitHub: github.com/iamdhruba\nLinkedIn: linkedin.com/in/saydhruba';
         break;
       case 'date':
         output = new Date().toLocaleString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -96,7 +102,7 @@ export default function Terminal() {
     <div
       ref={terminalRef}
       className="h-full w-full overflow-y-auto bg-[#0d0d0d] p-4 font-mono text-sm text-green-400 hide-scrollbar cursor-text"
-      onClick={() => document.getElementById('term-input')?.focus()}
+      onClick={() => inputRef.current?.focus({ preventScroll: true })}
     >
       {history.map((h, i) => (
         <div key={i} className="mb-1">
@@ -112,6 +118,7 @@ export default function Terminal() {
       <div className="flex items-center">
         <span className="text-blue-400 mr-2 select-none">dhruba@macbook ~ %</span>
         <input
+          ref={inputRef}
           id="term-input"
           type="text"
           value={input}
@@ -120,7 +127,6 @@ export default function Terminal() {
           className="flex-1 bg-transparent outline-none text-white caret-green-400"
           autoComplete="off"
           spellCheck={false}
-          autoFocus
         />
       </div>
     </div>

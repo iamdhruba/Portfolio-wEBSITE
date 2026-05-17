@@ -5,6 +5,7 @@ import { motion, useMotionValue, useTransform, useSpring, MotionValue } from 'fr
 import { useOSStore } from '@/store/useOSStore';
 import { useWindowStore } from '@/store/useWindowStore';
 import { APP_REGISTRY } from '@/data/apps';
+import { App } from '@/types/app';
 
 export default function Dock() {
   const mouseX = useMotionValue(Infinity);
@@ -45,7 +46,7 @@ export default function Dock() {
   );
 }
 
-function DockItem({ app, mouseX, isOpen, isActive, onClick }: { app: any, mouseX: MotionValue, isOpen: boolean, isActive: boolean, onClick: (e: React.MouseEvent) => void }) {
+function DockItem({ app, mouseX, isOpen, isActive, onClick }: { app: App, mouseX: MotionValue, isOpen: boolean, isActive: boolean, onClick: (e: React.MouseEvent) => void }) {
   const ref = useRef<HTMLDivElement>(null);
   const setDockIconRect = useOSStore(state => state.setDockIconRect);
   

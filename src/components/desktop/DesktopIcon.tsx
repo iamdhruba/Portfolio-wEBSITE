@@ -30,10 +30,15 @@ export default function DesktopIcon({ appId, label, onDoubleClick, containerRef 
   }, [savedPos.x, savedPos.y]);
 
   const isDragging = React.useRef(false);
+  const wasDragged = React.useRef(false);
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (isDragging.current) return;
+    if (wasDragged.current) {
+      wasDragged.current = false;
+      return;
+    }
     setActiveApp(appId as any);
   };
 
@@ -50,15 +55,24 @@ export default function DesktopIcon({ appId, label, onDoubleClick, containerRef 
       animate={{ x: pos.x, y: pos.y }}
       onDragStart={handleDragStart}
       onDragEnd={(_, info) => {
+        const distance = Math.sqrt(info.offset.x ** 2 + info.offset.y ** 2);
         const newPos = { x: pos.x + info.offset.x, y: pos.y + info.offset.y };
         setPos(newPos);
         setIconPosition(appId, newPos);
-        // Deselect after moving
-        setActiveApp(null);
-        // Reset dragging state after a short delay to block the click event
-        setTimeout(() => {
-          isDragging.current = false;
-        }, 100);
+        
+        if (distance > 5) {
+          // Deselect after moving
+          setActiveApp(null);
+          wasDragged.current = true;
+        } else {
+          wasDragged.current = false;
+        }
+        
+        isDragging.current = false;
+      }}
+      onPointerDown={() => {
+        // Reset the flag on any new pointer interaction so subsequent clicks always work
+        wasDragged.current = false;
       }}
       className={`group flex flex-col items-center justify-start w-24 h-28 pt-2 rounded-lg cursor-pointer transition-all duration-200 pointer-events-auto select-none z-10 ${
         isSelected ? 'bg-white/15' : 'active:bg-white/20'

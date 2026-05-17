@@ -16,7 +16,7 @@ export default function Home() {
   if (!mounted) return null;
 
   return (
-    <main className="h-screen w-screen overflow-hidden">
+    <main className="fixed inset-0 h-full w-full overflow-hidden select-none">
       {phase === 'boot' && <BootScreen />}
       {phase === 'lock' && <LockScreen />}
       {phase === 'desktop' && <Desktop />}

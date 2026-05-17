@@ -25,9 +25,23 @@ export default function Desktop() {
   const desktopRef = React.useRef<HTMLDivElement>(null);
 
   const handleDesktopClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget || (e.target as HTMLElement).classList.contains('bg-cover')) {
-      setActiveApp(null);
+    const target = e.target as HTMLElement;
+
+    // Do not deselect if the click is inside a window, dock, menubar, dropdown, or desktop icon
+    if (
+      target.closest('.glass') ||
+      target.closest('.window-titlebar') ||
+      target.closest('.menu-content') ||
+      target.closest('.group') ||
+      target.tagName === 'BUTTON' ||
+      target.tagName === 'INPUT' ||
+      target.tagName === 'TEXTAREA' ||
+      target.tagName === 'A'
+    ) {
+      return;
     }
+
+    setActiveApp(null);
   };
 
   return (

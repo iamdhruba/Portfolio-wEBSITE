@@ -29,7 +29,7 @@ export default function ResumeApp() {
             <h1 className="text-4xl font-bold mb-1">{user.name}</h1>
             <p className="text-gray-600 mb-2 font-medium">{user.description}</p>
             <p className="text-[13px] text-gray-500">
-              dhrubarajchaudhary498@gmail.com | Kathmandu, Nepal | +977-9705402345
+              dhrubaraj977@gmail.com | Kathmandu, Nepal | +977-9705402345
             </p>
           </div>
 

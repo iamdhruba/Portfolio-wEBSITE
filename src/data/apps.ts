@@ -8,7 +8,6 @@ export const APP_REGISTRY: App[] = [
   },
   {
     id: 'projects', label: 'Projects',
-    // Launchpad icon — grid of apps perfectly represents the projects grid
     icon: 'https://raw.githubusercontent.com/PuruVJ/macos-web/main/public/app-icons/launchpad/512.png',
     component: 'ProjectsApp', defaultSize: { width: 860, height: 620 }, minSize: { width: 600, height: 400 }
   },
